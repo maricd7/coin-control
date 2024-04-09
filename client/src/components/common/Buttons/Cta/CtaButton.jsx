@@ -2,7 +2,7 @@ import React from 'react'
 
 function CtaButton({onClick,text,type}) {
   return (
-   <button onClick={onClick} type={type}>{text}</button>
+   <button className='bg-teal-500 px-4 py-2 rounded-md text-white shadow-lg' onClick={onClick} type={type}>{text}</button>
   )
 }
 

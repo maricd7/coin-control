@@ -1,9 +1,10 @@
 import React from 'react'
+import LoginContainer from '../components/LoginContainer/Login'
 
 function Login() {
   return (
-    <div>
-        <h1>Login page</h1>
+    <div className='flex justify-center items-center flex-col h-screen'>
+        <LoginContainer/>
     </div>
   )
 }
