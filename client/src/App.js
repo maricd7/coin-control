@@ -9,6 +9,7 @@ import {
 
 import Login from './pages/login';
 import Home from './pages/home';
+import Signup from './pages/signup';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
     <Router>
     <Routes>
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route exact path="/" element={<Home />} />
     </Routes>
 </Router>
