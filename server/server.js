@@ -14,18 +14,13 @@ const app = express();
 
 app.use(express.json());
 
-console.log("Atlas URI:", process.env.ATLAS_URI);
-
-// connect to db
-// mongoose.connect(process.env.ATLAS_URI)
-// .then(()=>{
-//   app.listen(PORT, () => {
-//     console.log(`Server listening on port ${PORT}`);
-//   });
-// })
-// .catch((error)=>{
-//   console.log(error)
-// })
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 
 
 mongoose.connect(process.env.ATLAS_URI, {
@@ -39,13 +34,7 @@ app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
 });
 
-app.use(
-  cors({
-    origin: ["http://localhost:5050"],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  })
-);
+
 
 // managing cookie-based sessions
 app.use(cookieParser());
