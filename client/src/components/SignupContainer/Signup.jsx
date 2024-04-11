@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react'
 import Input from '../common/Input/Input'
 import CtaButton from '../common/Buttons/Cta/CtaButton'
 import axios from 'axios'
-import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function SignupContainer() {
     const username = useRef()
@@ -10,6 +10,10 @@ export default function SignupContainer() {
     const password = useRef()
     const confirmPassword = useRef()
 
+
+    const navigate = useNavigate()
+
+    //register submit handler
     const handleSubmit  = async(e)=>{
       e.preventDefault()
 
@@ -25,10 +29,7 @@ export default function SignupContainer() {
         );
         const { success, message } = data;
         if (success) {
-          console.log('succesfull signup')
-          setTimeout(() => {
-            redirect("/");
-          }, 1000);
+           navigate("/home");
         } else {
           console.log('error signing up')
         }
