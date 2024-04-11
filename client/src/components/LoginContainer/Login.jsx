@@ -2,14 +2,18 @@ import React, { useRef } from 'react'
 import Input from '../common/Input/Input'
 import CtaButton from '../common/Buttons/Cta/CtaButton'
 import axios from 'axios'
-
-
+import {useNavigate} from 'react-router-dom'
 export default function LoginContainer() {
 
   //reference for input values
   const email = useRef()
   const password = useRef()
 
+
+  const navigate = useNavigate();
+
+
+  //submit handler
   const handleSubmit = async (e)=>{
     e.preventDefault()
     console.log('submitted')
@@ -25,6 +29,9 @@ export default function LoginContainer() {
       );
       console.log(data);
       const { success, message } = data
+      if (success) {
+        navigate('/')
+      }
     } catch (error) {
       console.log(error);
     }
