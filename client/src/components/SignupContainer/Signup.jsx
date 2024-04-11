@@ -5,12 +5,6 @@ import axios from 'axios'
 import { redirect } from "react-router-dom";
 
 export default function SignupContainer() {
-    const [emailValue,setEmailValue] = useState()
-    const [passwordValue,setPasswordValue] = useState()
-    const [usernameValue,setUsernameValue] = useState()
-
-    
-
     const username = useRef()
     const email = useRef()
     const password = useRef()
@@ -19,10 +13,6 @@ export default function SignupContainer() {
     const handleSubmit  = async(e)=>{
       e.preventDefault()
 
-      setEmailValue(email.current?.value); 
-      setPasswordValue(password.current?.value);
-      setUsernameValue(username.current?.value);
-      console.log(emailValue, 'aspiodj')
       try {
         const { data } = await axios.post(
           "http://localhost:5050/signup",
