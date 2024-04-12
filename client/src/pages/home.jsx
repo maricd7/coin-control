@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
+import Nav from "../components/Nav/Nav";
 
 
 
@@ -30,7 +31,10 @@ function Home() {
     verifyUser()
   }, []);
   console.log(username, 'user nejm')
-  return <div>Home</div>;
+  return( 
+  <div>
+    <Nav username={username}/>
+  </div>)
 }
 
 export default Home;
