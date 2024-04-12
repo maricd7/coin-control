@@ -47,6 +47,12 @@ export const Login = async (req, res, next) => {
        withCredentials: true,
        httpOnly: false,
      });
+    res.cookie('username', user.username, { 
+      withCredentials: true,
+      httpOnly: false,
+    });
+
+
      res.status(201).json({ message: "User logged in successfully", success: true });
      next()
   } catch (error) {
