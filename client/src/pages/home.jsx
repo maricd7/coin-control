@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import BudgetCard from "../components/BudgetCard/BudgetCard";
 import HomeBanner from "../components/HomeBanner/HomeBanner";
 import Transactions from "../components/Transactions/Transactions";
+import Footer from "../components/Footer/Footer";
 
 
 
@@ -46,6 +47,7 @@ function Home() {
     </div>
     <HomeBanner username={username}/>
     <Transactions/> 
+    <Footer/>
   </div>)
 }
 
