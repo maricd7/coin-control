@@ -5,6 +5,7 @@ import Nav from "../components/Nav/Nav";
 import { useNavigate } from "react-router-dom";
 import BudgetCard from "../components/BudgetCard/BudgetCard";
 import HomeBanner from "../components/HomeBanner/HomeBanner";
+import Transactions from "../components/Transactions/Transactions";
 
 
 
@@ -44,6 +45,7 @@ function Home() {
       <BudgetCard label='My Balance' value='$5200' icon='mingcute:coin-2-line'/>
     </div>
     <HomeBanner username={username}/>
+    <Transactions/> 
   </div>)
 }
 
