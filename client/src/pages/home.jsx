@@ -3,6 +3,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import Nav from "../components/Nav/Nav";
 import { useNavigate } from "react-router-dom";
+import BudgetCard from "../components/BudgetCard/BudgetCard";
 
 
 
@@ -30,12 +31,17 @@ function Home() {
 
     verifyUser()
   }, []);
-  if(!username.length){
+  if(!username.length){ 
     navigate('/login')
   }
   return( 
-  <div>
+  <div className="mx-72">
     <Nav username={username}/>
+    <div className="flex gap-4">
+      <BudgetCard label='My Balance' value='$5200' icon='mingcute:coin-2-line'/>
+      <BudgetCard label='My Balance' value='$5200' icon='mingcute:coin-2-line'/>
+      <BudgetCard label='My Balance' value='$5200' icon='mingcute:coin-2-line'/>
+    </div>
   </div>)
 }
 
