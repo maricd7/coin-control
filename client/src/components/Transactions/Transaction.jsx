@@ -1,7 +1,7 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import React from "react";
 
-export default function Transaction() {
+export default function Transaction({setTransactionModal}) {
   return (
     <div className="flex w-full justify-between">
       <div className="flex items-center gap-4">
@@ -10,6 +10,7 @@ export default function Transaction() {
           width="24"
           height="24"
           style={{ color: "red" }}
+          onClick={()=>setTransactionModal(false)}
         />
         <div className="flex flex-col">
           <h4 className="text-white font-bold">Car Payment</h4>

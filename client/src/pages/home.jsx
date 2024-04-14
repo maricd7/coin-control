@@ -37,6 +37,10 @@ function Home() {
   if(!username.length){ 
     navigate('/login')
   }
+
+  const [transactionModal,setTransactionModal] = useState(false)
+
+  
   return( 
   <div className="mx-72">
     <Nav username={username}/>
@@ -45,8 +49,8 @@ function Home() {
       <BudgetCard label='My Balance' value='$5200' icon='mingcute:coin-2-line'/>
       <BudgetCard label='My Balance' value='$5200' icon='mingcute:coin-2-line'/>
     </div>
-    <HomeBanner username={username}/>
-    <Transactions/> 
+    <HomeBanner username={username} setTransactionModal={setTransactionModal}/>
+    <Transactions transactionModal={transactionModal} setTransactionModal={setTransactionModal}/> 
     <Footer/>
   </div>)
 }

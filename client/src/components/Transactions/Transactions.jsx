@@ -1,20 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Transaction from './Transaction'
 import TransactionModal from './TransactionModal'
 
-function Transactions() {
+function Transactions({transactionModal,setTransactionModal}) {
+
+  
   return (
     <div className='flex flex-col gap-4'>
         <h2 className='text-white text-4xl font-semibold'>Transaction history</h2>
         <div  className="bg-zinc-800 p-8 rounded-lg shadow-lg w-full">
-            <Transaction/>
-            <Transaction/>
-            <Transaction/>
-            <Transaction/>
-            <Transaction/>
+            <Transaction setTransactionModal={setTransactionModal}/>
+            <Transaction setTransactionModal={setTransactionModal}/>
+            <Transaction setTransactionModal={setTransactionModal}/>
+            <Transaction setTransactionModal={setTransactionModal}/>
+            <Transaction setTransactionModal={setTransactionModal}/>
         </div>
-        <TransactionModal/>
-    </div>
+      {transactionModal ? <TransactionModal setTransactionModal={setTransactionModal}/> : <></>}
+</div>
   )
 }
 
