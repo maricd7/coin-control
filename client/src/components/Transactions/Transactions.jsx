@@ -1,5 +1,6 @@
 import React from 'react'
 import Transaction from './Transaction'
+import TransactionModal from './TransactionModal'
 
 function Transactions() {
   return (
@@ -12,6 +13,7 @@ function Transactions() {
             <Transaction/>
             <Transaction/>
         </div>
+        <TransactionModal/>
     </div>
   )
 }
