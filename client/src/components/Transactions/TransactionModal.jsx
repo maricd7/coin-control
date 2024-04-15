@@ -11,6 +11,7 @@ export default function TransactionModal({setTransactionModal}) {
         <Icon onClick={()=>setTransactionModal(false)}  icon="mingcute:close-circle-fill" width="24" height="24"  style={{color:'#fff'}} />
         </div>
         <form className='w-full flex flex-col gap-4'>
+            <Input placeholder='Name of the transaction' type='text' />
             <Input placeholder='Enter value' type='number' />
             <select className='w-full'>
                 <option>Income</option>
