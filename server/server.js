@@ -5,7 +5,7 @@ import  mongoose  from "mongoose";
 import cookieParser from "cookie-parser";
 dotenv.config();
 import AuthRoute from './routes/AuthRoute.js'
-
+import TransactionRoute from './routes/TransactionRoute.js'
 const PORT = process.env.PORT || 5050;
 const app = express();
 
@@ -43,3 +43,4 @@ app.use(express.json());
 
 //making server aware of routes
 app.use("/", AuthRoute);
+app.use('/', TransactionRoute)
