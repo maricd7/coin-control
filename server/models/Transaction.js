@@ -8,7 +8,6 @@ const transactionSchema = new Schema({
     transactionType: {
       type: String,
       // required: [true, 'Plase enter transaction type'],
-      unique: true,
     },
     amount: {
       type: Number,
