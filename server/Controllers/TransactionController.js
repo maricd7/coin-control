@@ -4,8 +4,8 @@ import Transaction from "../Models/Transaction.js";
 
 export const createTransaction = async (req, res, next) => {
     try {
-      const { transactionType, amount, name, createdAt } = req.body;
-      const transaction = await Transaction.create({ transactionType, amount,name, createdAt });
+      const { transactionType, amount, name, createdAt,username } = req.body;
+      const transaction = await Transaction.create({ transactionType, amount,name, createdAt, username });
       res.status(201).json({ message: 'Transaction is submitted.', success: true,});
       next();
     } catch (error) {

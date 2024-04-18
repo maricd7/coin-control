@@ -21,7 +21,7 @@ const transactionSchema = new Schema({
       type: Date,
       default: new Date(),
     },
-    user:{
+    username:{
         type:String,
     }
   });
