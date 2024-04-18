@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Transaction from './Transaction'
 import TransactionModal from './TransactionModal'
 
-function Transactions({transactionModal,setTransactionModal}) {
+function Transactions({transactionModal,setTransactionModal,username}) {
 
   
   return (
@@ -15,7 +15,7 @@ function Transactions({transactionModal,setTransactionModal}) {
             <Transaction setTransactionModal={setTransactionModal}/>
             <Transaction setTransactionModal={setTransactionModal}/>
         </div>
-      {transactionModal ? <TransactionModal setTransactionModal={setTransactionModal}/> : <></>}
+      {transactionModal ? <TransactionModal username={username} setTransactionModal={setTransactionModal}/> : <></>}
 </div>
   )
 }
