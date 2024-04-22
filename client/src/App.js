@@ -15,16 +15,18 @@ import {TransactionContextProvider} from './contexts/TransactionContext';
 
 function App() {
   return (
-    <TransactionContextProvider>
+ 
     <Router>
+          <TransactionContextProvider>
     <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route exact path="/" element={<Home />} />
         <Route path='/home' element={<Home />}/>
     </Routes>
+    </TransactionContextProvider>
 </Router>
-</TransactionContextProvider>
+
   );
 }
 

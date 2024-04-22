@@ -1,6 +1,7 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
 import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 
 const TransactionContext = createContext({
@@ -15,8 +16,10 @@ const TransactionContext = createContext({
     const [expanses,setExpanses] = useState(0)
     const [transactionsHistory,setTransactionHistory] = useState([])
     const [username,setUsername] = useState()
+    const navigate = useNavigate()
 
     useEffect(() => {
+      console.log('Context executed!')
       const verifyUser = async () => {
         try {
           const storedUsername = Cookies.get("username");
@@ -32,11 +35,12 @@ const TransactionContext = createContext({
           }
         } catch (error) {
           console.error("Error fetching username:", error);
+          navigate('/login')
         }
       };
   
       verifyUser()
-    }, [])
+    }, [username])
   
     
     
