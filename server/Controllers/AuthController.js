@@ -1,5 +1,5 @@
 // const User = require('../Models/user')
-import user from '../models/user.js';
+import User from '../Models/user.js'
 import { createSecretToken } from '../util/SecretToken.js'
 import bcrypt from 'bcryptjs';
 
