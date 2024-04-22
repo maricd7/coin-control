@@ -10,10 +10,12 @@ import {
 import Login from './pages/login';
 import Home from './pages/home';
 import Signup from './pages/signup';
+import {TransactionContextProvider} from './contexts/TransactionContext';
 
 
 function App() {
   return (
+    <TransactionContextProvider>
     <Router>
     <Routes>
         <Route path="/login" element={<Login />} />
@@ -22,6 +24,7 @@ function App() {
         <Route path='/home' element={<Home />}/>
     </Routes>
 </Router>
+</TransactionContextProvider>
   );
 }
 
