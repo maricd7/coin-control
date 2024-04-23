@@ -64,7 +64,7 @@ const TransactionContext = createContext({
         // if transaction is income 
         if(transaction.transactionType.toLowerCase() == 'income'){
           setIncomes(prevIncomes => prevIncomes + transaction.amount);
-          setBudget(budget+transaction.amount)
+          setBudget(prevBudget=>prevBudget+transaction.amount)
         }
         //if transaction is expanse
         else{
