@@ -54,20 +54,17 @@ const TransactionContext = createContext({
       getTransactions()
 
     }, [username,])
-  
-    
 
     function setType(values){
-      let incomesValue = 0 ;
-      let expanseValue = 0 ;
       values.forEach(transaction=>{
+
+        // if transaction is income 
         if(transaction.transactionType.toLowerCase() == 'income'){
-          incomesValue+=transaction.value
-          setIncomes(incomesValue)
-        }else{
-          console.log(transaction.value, 'asdasd')
-          expanseValue+=transaction.value
-          setExpanses(expanseValue)
+          setIncomes(incomes+transaction.value)
+        }
+        //if transaction is expanse
+        else{
+          setExpanses(expanses+transaction.value)
         }
       })
       console.log('Incomes', incomes)
