@@ -7,14 +7,17 @@ import { useNavigate } from "react-router-dom";
 const TransactionContext = createContext({
     incomes: null, 
     expanses: null,
+    budget:null,
     transactionsHistory:null, 
     username:'',
+
   });
 
   export const TransactionContextProvider = ({ children }) => {
     const [transactions,setTransactions]=  useState([])
     const [incomes, setIncomes] = useState(0)
     const [expanses,setExpanses] = useState(0)
+    const [budget,setBudget]= useState(0)
     const [transactionsHistory,setTransactionHistory] = useState([])
     const [username,setUsername] = useState()
     const navigate = useNavigate()
@@ -60,26 +63,21 @@ const TransactionContext = createContext({
 
         // if transaction is income 
         if(transaction.transactionType.toLowerCase() == 'income'){
-          setIncomes(incomes+transaction.value)
+          setIncomes(prevIncomes => prevIncomes + transaction.amount);
+          setBudget(budget+transaction.amount)
         }
         //if transaction is expanse
         else{
-          setExpanses(expanses+transaction.value)
+          setExpanses(prevIncomes => prevIncomes + transaction.amount);
+          setBudget(prevBudget=>prevBudget-transaction.amount)
         }
       })
-      console.log('Incomes', incomes)
-      console.log('Expanses', expanses)
-    }    
-    
-   
-    
-    
-    
-    
-    
+    }     
+
     const contextValue = {
       incomes,
       expanses,
+      budget,
       transactionsHistory,
       username
     };
