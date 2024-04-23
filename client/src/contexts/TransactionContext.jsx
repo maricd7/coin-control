@@ -12,6 +12,7 @@ const TransactionContext = createContext({
   });
 
   export const TransactionContextProvider = ({ children }) => {
+    const [transactions,setTransactions]=  useState([])
     const [incomes, setIncomes] = useState(0)
     const [expanses,setExpanses] = useState(0)
     const [transactionsHistory,setTransactionHistory] = useState([])
@@ -38,14 +39,42 @@ const TransactionContext = createContext({
           navigate('/login')
         }
       };
-  
+
+      const getTransactions = async()=>{
+        try{
+          const { data } = await axios.get(`http://localhost:5050/transactions?username=${username}`)
+          setTransactions(data)
+          console.log('Success getting transactions', data)
+          setType(data)
+        }catch{
+          console.log('Error fetching transactions!')
+        }  
+      }
       verifyUser()
-    }, [username])
+      getTransactions()
+
+    }, [username,])
   
     
+
+    function setType(values){
+      let incomesValue = 0 ;
+      let expanseValue = 0 ;
+      values.forEach(transaction=>{
+        if(transaction.transactionType.toLowerCase() == 'income'){
+          incomesValue+=transaction.value
+          setIncomes(incomesValue)
+        }else{
+          console.log(transaction.value, 'asdasd')
+          expanseValue+=transaction.value
+          setExpanses(expanseValue)
+        }
+      })
+      console.log('Incomes', incomes)
+      console.log('Expanses', expanses)
+    }    
     
-    
-    
+   
     
     
     
