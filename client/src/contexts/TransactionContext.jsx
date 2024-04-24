@@ -74,12 +74,14 @@ const TransactionContext = createContext({
       })
     }     
 
+
     const contextValue = {
       incomes,
       expanses,
       budget,
       transactionsHistory,
-      username
+      username,
+      
     };
   
     return (
