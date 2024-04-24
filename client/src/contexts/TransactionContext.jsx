@@ -8,7 +8,7 @@ const TransactionContext = createContext({
     incomes: null, 
     expanses: null,
     budget:null,
-    transactionsHistory:null, 
+    transactions:null, 
     username:'',
 
   });
@@ -18,7 +18,6 @@ const TransactionContext = createContext({
     const [incomes, setIncomes] = useState(0)
     const [expanses,setExpanses] = useState(0)
     const [budget,setBudget]= useState(0)
-    const [transactionsHistory,setTransactionHistory] = useState([])
     const [username,setUsername] = useState()
     const navigate = useNavigate()
 
@@ -79,7 +78,7 @@ const TransactionContext = createContext({
       incomes,
       expanses,
       budget,
-      transactionsHistory,
+      transactions,
       username,
       
     };
