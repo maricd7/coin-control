@@ -3,7 +3,7 @@ import React from "react";
 
 export default function BudgetCard({ label, value, icon,border }) {
   return (
-    <div className="bg-zinc-800 p-8 rounded-lg shadow-lg w-full" style={{border:border}}>
+    <div className="bg-zinc-800 p-8 rounded-lg shadow-lg w-full hover:bg-zinc-950" style={{border:border}}>
       <div className="flex gap-1 items-center text-white">
         <Icon icon={icon} width="24" height="24" style={{ color: "#fff" }} />
         <p>{label}</p>
