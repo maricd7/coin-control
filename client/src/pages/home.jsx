@@ -20,9 +20,9 @@ function Home() {
 
   },[])
   return( 
-    <div className="flex mx-72">
+    <div className="flex ">
       <Sidebar/>
-      <div>
+      <div className="mx-72">
     <Nav username={username}/>
     <div className="flex gap-4">
       <BudgetCard label='My Balance' value={budget} icon='mingcute:coin-2-line' border={'1px solid rgb(37 99 235)'}/>

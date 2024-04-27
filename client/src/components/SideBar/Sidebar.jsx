@@ -3,12 +3,12 @@ import React from 'react'
 
 function Sidebar() {
   return (
-    <div>
-       <ul>
-        <li><div>Home</div></li>
-        <li><div>Charts</div></li>
-        <li><div>Profile</div></li>
-        <li><div>Log out</div></li>
+    <div className='  h-screen p-8'>
+       <ul className='flex flex-col gap-8'>
+        <li className='flex gap-2 items-center cursor-pointer'><Icon icon="ic:baseline-home" width="24" height="24"  style={{color:'#fff'}} /><div className='text-white'>Home</div></li>
+        <li className='flex gap-2 items-center cursor-pointer'><Icon icon="mdi:chart-line" width="24" height="24"  style={{color:'#fff'}} /><div className='text-white'>Charts</div></li>
+        <li className='flex gap-2 items-center cursor-pointer'><Icon icon="iconamoon:profile-fill" width="24" height="24"  style={{color:'#fff'}} /><div className='text-white'>Profile</div></li>
+        <li className='flex gap-2 items-center cursor-pointer' cursor-pointer><Icon icon="ph:sign-out-bold" width="24" height="24"  style={{color: '#fff'}} /><div className='text-white'>Log out</div></li>
        </ul>
     </div>
   )
