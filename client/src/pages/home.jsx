@@ -5,6 +5,7 @@ import HomeBanner from "../components/HomeBanner/HomeBanner";
 import Transactions from "../components/Transactions/Transactions";
 import Footer from "../components/Footer/Footer";
 import { useTransactionContext } from "../contexts/TransactionContext";
+import Sidebar from "../components/SideBar/Sidebar";
 
 
 
@@ -19,7 +20,9 @@ function Home() {
 
   },[])
   return( 
-  <div className="mx-72">
+    <div className="flex mx-72">
+      <Sidebar/>
+      <div>
     <Nav username={username}/>
     <div className="flex gap-4">
       <BudgetCard label='My Balance' value={budget} icon='mingcute:coin-2-line' border={'1px solid rgb(37 99 235)'}/>
@@ -29,7 +32,9 @@ function Home() {
     <HomeBanner username={username} setTransactionModal={setTransactionModal}/>
     <Transactions transactionModal={transactionModal} setTransactionModal={setTransactionModal} username={username}/> 
     <Footer/>
-  </div>)
+  </div>
+    </div>
+  )
 }
 
 export default Home;
