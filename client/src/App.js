@@ -11,6 +11,7 @@ import Login from './pages/login';
 import Home from './pages/home';
 import Signup from './pages/signup';
 import {TransactionContextProvider} from './contexts/TransactionContext';
+import Charts from './pages/charts';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route exact path="/" element={<Home />} />
         <Route path='/home' element={<Home />}/>
+        <Route path='/charts' element={<Charts />}/>
     </Routes>
     </TransactionContextProvider>
 </Router>
