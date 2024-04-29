@@ -3,7 +3,7 @@ import React from 'react'
 
 function Sidebar() {
   return (
-    <div className='  h-screen p-8'>
+    <div className='fixed h-screen p-8'>
        <ul className='flex flex-col gap-8'>
         <li className='flex gap-2 items-center cursor-pointer'><Icon icon="ic:baseline-home" width="24" height="24"  style={{color:'#fff'}} /><div className='text-white'>Home</div></li>
         <li className='flex gap-2 items-center cursor-pointer'><Icon icon="mdi:chart-line" width="24" height="24"  style={{color:'#fff'}} /><div className='text-white'>Charts</div></li>

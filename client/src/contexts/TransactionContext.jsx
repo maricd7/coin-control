@@ -46,7 +46,6 @@ const TransactionContext = createContext({
         try{
           const { data } = await axios.get(`http://localhost:5050/transactions?username=${username}`)
           setTransactions(data)
-          console.log('Success getting transactions', data)
           setType(data)
         }catch{
           console.log('Error fetching transactions!')
@@ -55,23 +54,27 @@ const TransactionContext = createContext({
       verifyUser()
       getTransactions()
 
-    }, [username,])
+    }, [transactions])
 
-    function setType(values){
-      values.forEach(transaction=>{
-
-        // if transaction is income 
-        if(transaction.transactionType.toLowerCase() == 'income'){
-          setIncomes(prevIncomes => prevIncomes + transaction.amount);
-          setBudget(prevBudget=>prevBudget+transaction.amount)
+    function setType(values) {
+      let totalIncomes = 0;
+      let totalExpenses = 0;
+    
+      values.forEach((transaction) => {
+        if (transaction.transactionType.toLowerCase() === 'income') {
+          totalIncomes += transaction.amount;
+        } else {
+          totalExpenses += transaction.amount;
         }
-        //if transaction is expanse
-        else{
-          setExpanses(prevIncomes => prevIncomes + transaction.amount);
-          setBudget(prevBudget=>prevBudget-transaction.amount)
-        }
-      })
-    }     
+      });
+    
+      const totalBudget = totalIncomes - totalExpenses;
+    
+      // update after calculating
+      setIncomes(totalIncomes);
+      setExpanses(totalExpenses);
+      setBudget(totalBudget);
+    }
 
 
     const contextValue = {

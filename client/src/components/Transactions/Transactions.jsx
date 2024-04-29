@@ -1,12 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Transaction from './Transaction'
 import TransactionModal from './TransactionModal'
 import { useTransactionContext } from '../../contexts/TransactionContext'
 
 function Transactions({transactionModal,setTransactionModal,username}) {
   const {transactions} = useTransactionContext()
-
-  console.log(transactions,'HEJ')
   
   return (
     <div className='flex flex-col gap-4'>
