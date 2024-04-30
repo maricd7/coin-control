@@ -19,6 +19,7 @@ export const TransactionContextProvider = ({ children }) => {
   const [username, setUsername] = useState();
   const [loading, setLoading] = useState(true); // Add loading state
   const navigate = useNavigate();
+  const url = window.location.href;
 
   useEffect(() => {
     console.log('Context executed!')
@@ -37,7 +38,6 @@ export const TransactionContextProvider = ({ children }) => {
         }
       } catch (error) {
         console.error("Error fetching username:", error);
-        // navigate('/login')
       }
     };
 

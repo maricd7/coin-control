@@ -15,10 +15,6 @@ function Home() {
   const {expanses,incomes,budget}  = useTransactionContext()
 
 
-
-  useEffect(()=>{
-
-  },[])
   return( 
     <div className="flex ">
       <Sidebar/>

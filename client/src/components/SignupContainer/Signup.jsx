@@ -1,11 +1,12 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Input from '../common/Input/Input'
 import CtaButton from '../common/Buttons/Cta/CtaButton'
 import axios from 'axios'
 import { useNavigate } from "react-router-dom";
+import { useTransactionContext } from '../../contexts/TransactionContext';
 
 export default function SignupContainer() {
-    const username = useRef()
+    const usernameInput = useRef()
     const email = useRef()
     const password = useRef()
     const confirmPassword = useRef()
@@ -23,7 +24,7 @@ export default function SignupContainer() {
           {
               email: email.current.value,
               password: password.current.value,
-              username: username.current.value,
+              username: usernameInput.current.value,
           },
           { withCredentials: true }
         );
@@ -40,6 +41,14 @@ export default function SignupContainer() {
 
 
     }
+
+  const {username} = useTransactionContext()
+  useEffect(()=>{
+    if(username){
+      console.log('username')
+      navigate('/')
+    }
+  },[username])
   return (
     <div className='p-8 flex flex-col gap-4 dark:bg-slate-900 bg-white shadow-lg rounded-lg w-fit border-2 border-gray-200 '>
         <h2 className='text-4xl font-bold'>Sign up</h2>
@@ -47,7 +56,7 @@ export default function SignupContainer() {
         <div className='flex flex-col gap-2'>
           <form onSubmit={(e)=>handleSubmit(e)}>
             <Input placeholder='Email' label='Email' type='email' reference={email}/>
-            <Input placeholder='Usernamee' label='Username' type='text'  reference={username}/>
+            <Input placeholder='Usernamee' label='Username' type='text'  reference={usernameInput}/>
             <Input placeholder='Password' label='Password' type='password'  reference={password}/>
             <Input placeholder='Password' label='Confirm Password' type='password'  reference={confirmPassword}/>
             <CtaButton type='submit' text='Sign up'/>
