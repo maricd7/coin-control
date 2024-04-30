@@ -6,6 +6,7 @@ import Transactions from "../components/Transactions/Transactions";
 import Footer from "../components/Footer/Footer";
 import { useTransactionContext } from "../contexts/TransactionContext";
 import Sidebar from "../components/SideBar/Sidebar";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -13,7 +14,7 @@ function Home() {
   const {username} = useTransactionContext()
   const [transactionModal,setTransactionModal] = useState(false)
   const {expanses,incomes,budget}  = useTransactionContext()
-
+  const navigate = useNavigate()
 
   return( 
     <div className="flex ">

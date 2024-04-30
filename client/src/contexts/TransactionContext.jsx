@@ -4,11 +4,13 @@ import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
 const TransactionContext = createContext({
-  incomes: null, 
+  incomes: null,
   expanses: null,
   budget: null,
-  transactions: null, 
+  transactions: null,
   username: '',
+  setUsername:()=>[],
+  getTransactions:()=>[],
 });
 
 export const TransactionContextProvider = ({ children }) => {
@@ -16,13 +18,12 @@ export const TransactionContextProvider = ({ children }) => {
   const [incomes, setIncomes] = useState(0);
   const [expanses, setExpanses] = useState(0);
   const [budget, setBudget] = useState(0);
-  const [username, setUsername] = useState();
-  const [loading, setLoading] = useState(true); // Add loading state
+  const [username, setUsername] = useState('');
   const navigate = useNavigate();
-  const url = window.location.href;
 
   useEffect(() => {
     console.log('Context executed!')
+    console.log('Effect triggered with username:', username);
     const verifyUser = async () => {
       try {
         const storedUsername = Cookies.get("username");
@@ -38,30 +39,32 @@ export const TransactionContextProvider = ({ children }) => {
         }
       } catch (error) {
         console.error("Error fetching username:", error);
+        navigate('/login')
       }
     };
-
-    const getTransactions = async () => {
-      try {
-        const { data } = await axios.get(`http://localhost:5050/transactions?username=${username}`)
-        setTransactions(data)
-        setType(data)
-      } catch (error) {
-        console.log('Error fetching transactions!', error)
-      }  
-    };
-
     verifyUser();
-    // Fetch transactions only when the component mounts or when the username changes
+  }, []);
+
+  useEffect(() => {
     if (username) {
       getTransactions();
     }
   }, [username]);
 
+  const getTransactions = async () => {
+    try {
+      const { data } = await axios.get(`http://localhost:5050/transactions?username=${username}`)
+      setTransactions(data)
+      setType(data)
+    } catch (error) {
+      console.log('Error fetching transactions!', error)
+    }
+  };
+
   function setType(values) {
     let totalIncomes = 0;
     let totalExpenses = 0;
-  
+
     values.forEach((transaction) => {
       if (transaction.transactionType.toLowerCase() === 'income') {
         totalIncomes += transaction.amount;
@@ -69,9 +72,9 @@ export const TransactionContextProvider = ({ children }) => {
         totalExpenses += transaction.amount;
       }
     });
-  
+
     const totalBudget = totalIncomes - totalExpenses;
-  
+
     // Update after calculating
     setIncomes(totalIncomes);
     setExpanses(totalExpenses);
@@ -84,11 +87,13 @@ export const TransactionContextProvider = ({ children }) => {
     budget,
     transactions,
     username,
+    setUsername,
+    getTransactions,
   };
 
   return (
     <TransactionContext.Provider value={contextValue}>
-       {children}
+      {children}
     </TransactionContext.Provider>
   );
 };

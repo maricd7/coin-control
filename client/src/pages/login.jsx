@@ -11,7 +11,7 @@ function Login() {
       console.log('username')
       navigate('/')
     }
-  },[username])
+  },[])
   return (
     <div className='flex justify-center items-center flex-col h-screen'>
         <LoginContainer/>
