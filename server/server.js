@@ -55,7 +55,7 @@ mongoose.connect(process.env.ATLAS_URI, {
   });
 
   // Start the server after dropping the index
-  app.listen(PORT, () => {
+  app.listen('https://coin-control-backend-ten.vercel.app/', () => {
     console.log(`Server is listening on port ${PORT}`);
   });
 })
