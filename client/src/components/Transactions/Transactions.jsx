@@ -12,7 +12,7 @@ function Transactions({transactionModal,setTransactionModal,username}) {
         <div  className="bg-zinc-800 p-8 rounded-lg shadow-lg w-full">
             <ul>
               {transactions.map((transaction,index)=>(
-                 <Transaction key={index} setTransactionModal={setTransactionModal} name={transaction.name} amount={transaction.amount} date={transaction.createdAt}/>
+                 <Transaction key={index} setTransactionModal={setTransactionModal} name={transaction.name} amount={transaction.amount} date={transaction.createdAt} type={transaction.transactionType}/>
               ))}
             </ul>
         </div>

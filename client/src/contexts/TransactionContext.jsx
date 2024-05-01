@@ -21,8 +21,8 @@ export const TransactionContextProvider = ({ children }) => {
   const navigate = useNavigate();
   const url = window.location.href
   useEffect(() => {
-    console.log('Context executed!')
-    console.log('Effect triggered with username:', username);
+    // console.log('Context executed!')
+    // console.log('Effect triggered with username:', username);
     const verifyUser = async () => {
       try {
         const storedUsername = Cookies.get("username");
@@ -37,7 +37,7 @@ export const TransactionContextProvider = ({ children }) => {
           setUsername(username);
         }
       } catch (error) {
-        console.error("Error fetching username:", error);
+        // console.error("Error fetching username:", error);
 
         //navigate to login when there is no user
         if(url.includes('signup') || url.includes('landing')){
