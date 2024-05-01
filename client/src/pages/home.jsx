@@ -11,11 +11,16 @@ import { useNavigate } from "react-router-dom";
 
 
 function Home() {
-  const {username} = useTransactionContext()
+  const {username,getTransactions} = useTransactionContext()
   const [transactionModal,setTransactionModal] = useState(false)
   const {expanses,incomes,budget}  = useTransactionContext()
   const navigate = useNavigate()
 
+  useEffect(()=>{
+    if(!username){
+      navigate('/login')
+    }
+  },[])
   return( 
     <div className="flex ">
       <Sidebar/>

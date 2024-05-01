@@ -9,7 +9,7 @@ export default function LoginContainer() {
   const email = useRef()
   const password = useRef()
   const navigate = useNavigate();
-  const { getTransactions } = useTransactionContext();
+  const { getTransactions,setUsername } = useTransactionContext();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,10 +23,10 @@ export default function LoginContainer() {
         { withCredentials: true }
       );
       console.log(data);
-      const { success, message } = data
+      const { success, message,username } = data
       if (success) {
         // If login is successful, trigger a re-fetch of transactions
-        getTransactions();
+        setUsername(username);
         navigate('/');
       }
     } catch (error) {

@@ -10,7 +10,6 @@ const TransactionContext = createContext({
   transactions: null,
   username: '',
   setUsername:()=>[],
-  getTransactions:()=>[],
 });
 
 export const TransactionContextProvider = ({ children }) => {
@@ -20,7 +19,7 @@ export const TransactionContextProvider = ({ children }) => {
   const [budget, setBudget] = useState(0);
   const [username, setUsername] = useState('');
   const navigate = useNavigate();
-
+  const url = window.location.href
   useEffect(() => {
     console.log('Context executed!')
     console.log('Effect triggered with username:', username);
@@ -39,28 +38,37 @@ export const TransactionContextProvider = ({ children }) => {
         }
       } catch (error) {
         console.error("Error fetching username:", error);
-        navigate('/login')
+
+        //navigate to login when there is no user
+        if(url.includes('signup') || url.includes('landing')){
+          return
+        }else{
+          navigate('/login')
+        }
       }
     };
+   
     verifyUser();
-  }, []);
 
-  useEffect(() => {
-    if (username) {
-      getTransactions();
-    }
   }, [username]);
 
+  //get transactions from db
   const getTransactions = async () => {
     try {
       const { data } = await axios.get(`http://localhost:5050/transactions?username=${username}`)
+      console.log(data, 'data')
       setTransactions(data)
       setType(data)
     } catch (error) {
       console.log('Error fetching transactions!', error)
     }
   };
+ useEffect(()=>{
+  getTransactions();
+ },[expanses,username])
 
+
+ //filter out types and values
   function setType(values) {
     let totalIncomes = 0;
     let totalExpenses = 0;
@@ -80,7 +88,6 @@ export const TransactionContextProvider = ({ children }) => {
     setExpanses(totalExpenses);
     setBudget(totalBudget);
   }
-
   const contextValue = {
     incomes,
     expanses,
@@ -88,7 +95,6 @@ export const TransactionContextProvider = ({ children }) => {
     transactions,
     username,
     setUsername,
-    getTransactions,
   };
 
   return (
