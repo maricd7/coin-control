@@ -29,9 +29,10 @@ ChartJS.register(
 
 
 function Chart() {
-    const {incomesData,expensesData} = useTransactionContext()
+    const {incomesData,expensesData,chartLabels} = useTransactionContext()
+    console.log(chartLabels)
     const data = {
-        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+        labels: [...chartLabels],
         datasets: [
           {
             label: "Incomes",

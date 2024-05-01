@@ -10,6 +10,7 @@ const TransactionContext = createContext({
   transactions: null,
   incomesData:[],
   expensesData:[],
+  chartLabels:[],
   username: '',
   setUsername:()=>[],
 });
@@ -22,6 +23,7 @@ export const TransactionContextProvider = ({ children }) => {
   const [username, setUsername] = useState('');
   const [incomesData,setIncomesData] = useState([]);
   const [expensesData,setExpenseData] = useState([]);
+  const [chartLabels,setChartLabels] = useState([]);
 
 
 
@@ -68,6 +70,10 @@ export const TransactionContextProvider = ({ children }) => {
         console.log(data, 'data')
         setTransactions(data)
         setType(data)
+        data.forEach(elem=>{
+          setChartLabels(prevLabels=>[...prevLabels,elem.createdAt?.slice(0,7)])
+        })
+        
       } catch (error) {
         console.log('Error fetching transactions!', error)
       }
@@ -81,6 +87,7 @@ export const TransactionContextProvider = ({ children }) => {
  },[expanses,username])
 
 
+ console.log(chartLabels)
  //filter out types and values
   function setType(values) {
     let totalIncomes = 0;
@@ -112,6 +119,7 @@ export const TransactionContextProvider = ({ children }) => {
     setUsername,
     incomesData,
     expensesData,
+    chartLabels,
   };
 
   return (
