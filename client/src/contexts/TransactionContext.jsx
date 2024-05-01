@@ -8,6 +8,8 @@ const TransactionContext = createContext({
   expanses: null,
   budget: null,
   transactions: null,
+  incomesData:[],
+  expensesData:[],
   username: '',
   setUsername:()=>[],
 });
@@ -18,6 +20,12 @@ export const TransactionContextProvider = ({ children }) => {
   const [expanses, setExpanses] = useState(0);
   const [budget, setBudget] = useState(0);
   const [username, setUsername] = useState('');
+  const [incomesData,setIncomesData] = useState([]);
+  const [expensesData,setExpenseData] = useState([]);
+
+
+
+  
   const navigate = useNavigate();
   const url = window.location.href
   useEffect(() => {
@@ -81,8 +89,10 @@ export const TransactionContextProvider = ({ children }) => {
     values.forEach((transaction) => {
       if (transaction.transactionType.toLowerCase() === 'income') {
         totalIncomes += transaction.amount;
+        setIncomesData(prevData => [...prevData, transaction.amount])
       } else {
         totalExpenses += transaction.amount;
+        setExpenseData(prevData => [...prevData, transaction.amount]);
       }
     });
 
@@ -100,6 +110,8 @@ export const TransactionContextProvider = ({ children }) => {
     transactions,
     username,
     setUsername,
+    incomesData,
+    expensesData,
   };
 
   return (

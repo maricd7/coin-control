@@ -8,35 +8,55 @@ import { useTransactionContext } from "../contexts/TransactionContext";
 import Sidebar from "../components/SideBar/Sidebar";
 import { useNavigate } from "react-router-dom";
 
-
-
 function Home() {
-  const {username,getTransactions} = useTransactionContext()
-  const [transactionModal,setTransactionModal] = useState(false)
-  const {expanses,incomes,budget}  = useTransactionContext()
-  const navigate = useNavigate()
+  const { username } = useTransactionContext();
+  const [transactionModal, setTransactionModal] = useState(false);
+  const { expanses, incomes, budget } = useTransactionContext();
+  const navigate = useNavigate();
 
-  useEffect(()=>{
-    if(!username){
-      navigate('/login')
+  useEffect(() => {
+    if (!username) {
+      navigate("/login");
     }
-  },[])
-  return( 
+  }, []);
+  return (
     <div className="flex ">
-      <Sidebar/>
+      <Sidebar />
       <div className="mx-72 w-full">
-    <Nav username={username}/>
-    <div className="flex gap-4">
-      <BudgetCard label='My Balance' value={budget} icon='mingcute:coin-2-line' border={'1px solid rgb(37 99 235)'}/>
-      <BudgetCard label='Incomes' value={incomes} icon='mingcute:coin-2-line' border={'1px solid rgb(34, 197, 94)'}/>
-      <BudgetCard label='Expanses' value={expanses} icon='mingcute:coin-2-line' border={'1px solid rgb(153 27 27)'}/>
+        <Nav />
+        <div className="flex gap-4">
+          <BudgetCard
+            label="My Balance"
+            value={budget}
+            icon="mingcute:coin-2-line"
+            border={"1px solid rgb(37 99 235)"}
+          />
+          <BudgetCard
+            label="Incomes"
+            value={incomes}
+            icon="mingcute:coin-2-line"
+            border={"1px solid rgb(34, 197, 94)"}
+          />
+          <BudgetCard
+            label="Expanses"
+            value={expanses}
+            icon="mingcute:coin-2-line"
+            border={"1px solid rgb(153 27 27)"}
+          />
+        </div>
+        <HomeBanner
+          username={username}
+          setTransactionModal={setTransactionModal}
+        />
+        <Transactions
+          transactionModal={transactionModal}
+          setTransactionModal={setTransactionModal}
+          username={username}
+        />
+        <Footer />
+      </div>
     </div>
-    <HomeBanner username={username} setTransactionModal={setTransactionModal}/>
-    <Transactions transactionModal={transactionModal} setTransactionModal={setTransactionModal} username={username}/> 
-    <Footer/>
-  </div>
-    </div>
-  )
+  );
 }
 
 export default Home;
