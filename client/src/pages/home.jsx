@@ -7,6 +7,7 @@ import Footer from "../components/Footer/Footer";
 import { useTransactionContext } from "../contexts/TransactionContext";
 import Sidebar from "../components/SideBar/Sidebar";
 import { useNavigate } from "react-router-dom";
+import Chart from "../components/Chart/Chart";
 
 function Home() {
   const { username } = useTransactionContext();
@@ -44,10 +45,13 @@ function Home() {
             border={"1px solid rgb(153 27 27)"}
           />
         </div>
+        <div className="flex items-center gap-4">
         <HomeBanner
           username={username}
           setTransactionModal={setTransactionModal}
         />
+        <Chart/>
+        </div>
         <Transactions
           transactionModal={transactionModal}
           setTransactionModal={setTransactionModal}
