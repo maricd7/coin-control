@@ -51,8 +51,8 @@ function Chart() {
       };
       console.log(incomesData,'inkom dejta')
   return (
-    <div>
-        <h2 className='text-4xl text-white font-bold'>Incomes and Expanses Chart</h2>
+    <div className='w-1/2 h-96 '>
+        <h2 className='text-xl text-white'>Line Chart</h2>
         <Line data={data} />
     </div>
   )
