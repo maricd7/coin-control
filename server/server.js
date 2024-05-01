@@ -71,3 +71,5 @@ app.use(express.json());
 //making server aware of routes
 app.use("/", AuthRoute);
 app.use('/', TransactionRoute)
+
+export default app ; 
