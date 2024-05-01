@@ -17,7 +17,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: ["https://coin-control123.vercel.app/", "https://localhost:3000"],
+    origin: ["http://localhost:3000", "https://coin-control123.vercel.app"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
@@ -55,7 +55,7 @@ mongoose.connect(process.env.ATLAS_URI, {
   });
 
   // Start the server after dropping the index
-  app.listen('https://coin-control-backend-ten.vercel.app/', () => {
+  app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`);
   });
 })
