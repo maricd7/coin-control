@@ -72,4 +72,4 @@ app.use(express.json());
 app.use("/", AuthRoute);
 app.use('/', TransactionRoute)
 
-export default app ; 
+export default {app} ; 
