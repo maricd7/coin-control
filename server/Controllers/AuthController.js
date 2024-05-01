@@ -67,15 +67,6 @@ export const Logout = async (req, res, next) => {
     // Clear cookies
     res.clearCookie('token', { withCredentials: true });
     res.clearCookie('username', { withCredentials: true });
-
-    // Optionally, you can also destroy the session if you are using sessions
-    // req.session.destroy((err) => {
-    //   if (err) {
-    //     console.error(err);
-    //     return next(err);
-    //   }
-    // });
-
     res.status(200).json({ message: 'User logged out successfully', success: true });
   } catch (error) {
     console.error(error);
