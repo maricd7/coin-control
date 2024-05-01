@@ -54,14 +54,19 @@ export const TransactionContextProvider = ({ children }) => {
 
   //get transactions from db
   const getTransactions = async () => {
-    try {
-      const { data } = await axios.get(`http://localhost:5050/transactions?username=${username}`)
-      console.log(data, 'data')
-      setTransactions(data)
-      setType(data)
-    } catch (error) {
-      console.log('Error fetching transactions!', error)
+    if(username){
+      try {
+        const { data } = await axios.get(`http://localhost:5050/transactions?username=${username}`)
+        console.log(data, 'data')
+        setTransactions(data)
+        setType(data)
+      } catch (error) {
+        console.log('Error fetching transactions!', error)
+      }
+    }else{
+      return
     }
+    
   };
  useEffect(()=>{
   getTransactions();

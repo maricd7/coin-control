@@ -11,7 +11,6 @@ export default function SignupContainer() {
     const password = useRef()
     const confirmPassword = useRef()
 
-
     const navigate = useNavigate()
 
     //register submit handler
@@ -31,6 +30,7 @@ export default function SignupContainer() {
         const { success, message } = data;
         if (success) {
            navigate("/home");
+
         } else {
           console.log('error signing up')
         }
@@ -56,11 +56,17 @@ export default function SignupContainer() {
         <div className='flex flex-col gap-2'>
           <form onSubmit={(e)=>handleSubmit(e)}>
             <Input placeholder='Email' label='Email' type='email' reference={email}/>
-            <Input placeholder='Usernamee' label='Username' type='text'  reference={usernameInput}/>
+            <Input placeholder='Username' label='Username' type='text'  reference={usernameInput}/>
             <Input placeholder='Password' label='Password' type='password'  reference={password}/>
             <Input placeholder='Password' label='Confirm Password' type='password'  reference={confirmPassword}/>
             <CtaButton type='submit' text='Sign up'/>
           </form>
+          <div className="flex flex-col gap-2">
+        <span className="text-center">Already have an account?</span>
+        <a href="/signup" className="text-blue-600 text-center underline">
+          Log  in
+        </a>
+      </div>
         </div>
 
     </div>
