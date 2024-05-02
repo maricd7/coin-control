@@ -24,10 +24,7 @@ app.use(
 );
 
 
-mongoose.connect(process.env.ATLAS_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+mongoose.connect(process.env.ATLAS_URI)
 .then(async () => {
   console.log("MongoDB is connected successfully");
 
