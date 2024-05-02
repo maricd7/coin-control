@@ -8,6 +8,7 @@ const TransactionContext = createContext({
   expanses: null,
   budget: null,
   transactions: null,
+  savings:null,
   incomesData:[],
   expensesData:[],
   chartLabels:[],
@@ -24,8 +25,7 @@ export const TransactionContextProvider = ({ children }) => {
   const [incomesData,setIncomesData] = useState([]);
   const [expensesData,setExpenseData] = useState([]);
   const [chartLabels,setChartLabels] = useState([]);
-
-
+  const [savings,setSavings] = useState(0)
 
   
   const navigate = useNavigate();
@@ -92,12 +92,15 @@ export const TransactionContextProvider = ({ children }) => {
   function setType(values) {
     let totalIncomes = 0;
     let totalExpenses = 0;
-
+    let totalSavings = 0;
     values.forEach((transaction) => {
       if (transaction.transactionType.toLowerCase() === 'income') {
         totalIncomes += transaction.amount;
         setIncomesData(prevData => [...prevData, transaction.amount])
-      } else {
+      }else if(transaction.transactionType.toLowerCase() === 'saving'){
+        totalSavings+=transaction.amount;
+      }
+       else {
         totalExpenses += transaction.amount;
         setExpenseData(prevData => [...prevData, transaction.amount]);
       }
@@ -108,6 +111,7 @@ export const TransactionContextProvider = ({ children }) => {
     // Update after calculating
     setIncomes(totalIncomes);
     setExpanses(totalExpenses);
+    setSavings(totalSavings)
     setBudget(totalBudget);
   }
   const contextValue = {
@@ -120,6 +124,7 @@ export const TransactionContextProvider = ({ children }) => {
     incomesData,
     expensesData,
     chartLabels,
+    savings,
   };
 
   return (

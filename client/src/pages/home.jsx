@@ -12,7 +12,7 @@ import Chart from "../components/Chart/Chart";
 function Home() {
   const { username } = useTransactionContext();
   const [transactionModal, setTransactionModal] = useState(false);
-  const { expanses, incomes, budget } = useTransactionContext();
+  const { expanses, incomes, budget,savings } = useTransactionContext();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -44,14 +44,19 @@ function Home() {
             icon="mingcute:coin-2-line"
             border={"1px solid rgb(153 27 27)"}
           />
+          <BudgetCard
+            label="Savings"
+            value={savings}
+            icon="mingcute:pig-money-line"
+            border={"1px solid rgb(34, 197, 94)"}
+          />
         </div>
-        <div className="flex items-center gap-4">
         <HomeBanner
           username={username}
           setTransactionModal={setTransactionModal}
         />
+        <h2 className='text-white text-4xl font-semibold mb-8'>Charts</h2>
         <Chart/>
-        </div>
         <Transactions
           transactionModal={transactionModal}
           setTransactionModal={setTransactionModal}

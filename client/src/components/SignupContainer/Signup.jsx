@@ -50,7 +50,7 @@ export default function SignupContainer() {
     }
   },[username])
   return (
-    <div className='p-8 flex flex-col gap-4 dark:bg-slate-900 bg-white shadow-lg rounded-lg w-fit border-2 border-gray-200 '>
+    <div className='p-8 flex flex-col gap-4 dark:bg-slate-900 bg-gray-200 shadow-lg rounded-lg w-fit border-2 border-gray-200 '>
         <h2 className='text-4xl font-bold'>Sign up</h2>
         <p>Make your Coin Control account today</p>
         <div className='flex flex-col gap-2'>
@@ -63,7 +63,7 @@ export default function SignupContainer() {
           </form>
           <div className="flex flex-col gap-2">
         <span className="text-center">Already have an account?</span>
-        <a href="/signup" className="text-blue-600 text-center underline">
+        <a href="/login" className="text-blue-600 text-center underline">
           Log  in
         </a>
       </div>

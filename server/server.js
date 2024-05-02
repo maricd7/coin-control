@@ -7,7 +7,8 @@ dotenv.config();
 import AuthRoute from './routes/AuthRoute.js'
 import TransactionRoute from './routes/TransactionRoute.js'
 import Transaction from "./Models/Transaction.js";
-const PORT = process.env.PORT || 5050;
+// const PORT = process.env.PORT || 5050;
+const PORT = 'https://coin-control-server.vercel.app/'
 const app = express();
 
 

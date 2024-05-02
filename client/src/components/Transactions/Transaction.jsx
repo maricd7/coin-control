@@ -10,6 +10,9 @@ export default function Transaction({setTransactionModal,name,date,amount,type})
     if(type=== 'Income'){
       setIcon('mingcute:plus-line')
       setIconColor('#4ade80')
+    }else if(type === 'Saving'){
+      setIcon('mingcute:pig-money-line')
+      setIconColor('#4ade80')
     }
   },[])
 

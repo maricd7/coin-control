@@ -21,7 +21,7 @@ function Landing() {
     <div className="mx-72 flex justify-center items-center h-screen gap-32 ">
       <div className="max-w-1/2 gap-8 flex flex-col">
         <h1 className="text-white font-bold text-6xl">
-          Welcome to CoinControl
+          Welcome to <span className="text-green-500">CoinControl</span>
         </h1>
         <p className="text-gray-400 text-xl max-w-1/4">
           Welcome to CoinControl, your go-to app for mastering your budget.

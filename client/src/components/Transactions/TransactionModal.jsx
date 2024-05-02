@@ -37,6 +37,7 @@ export default function TransactionModal({setTransactionModal,username}) {
             <select className='w-full'  value={selectedOption} onChange={(e) => setSelectedOption(e.target.value)}>
                 <option>Income</option>
                 <option>Expanse</option>
+                <option>Saving</option>
             </select>
             <CtaButton text='Submit' type='submit'/>
         </form>

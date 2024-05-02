@@ -51,7 +51,7 @@ function Chart() {
       };
       console.log(incomesData,'inkom dejta')
   return (
-    <div className='w-1/2 h-full p-8 bg-zinc-800 rounded-lg shadow-lg  flex justify-center gap-4 flex-col'>
+    <div className='w-full p-8 bg-zinc-800 rounded-lg shadow-lg  flex justify-center gap-4 flex-col mb-16'>
         <h2 className='text-xl text-white'>Line Chart</h2>
         <Line data={data} />
     </div>
