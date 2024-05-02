@@ -66,16 +66,11 @@ mongoose.connect(process.env.ATLAS_URI, {
 // managing cookie-based sessions
 app.use(cookieParser());
 
-app.use(express.json());
 
 //making server aware of routes
 app.use("/", AuthRoute);
 app.use('/', TransactionRoute) 
 
-
-import express from "express";
-import dotenv from 'dotenv'
-dotenv.config();
 
 
 app.get("/", (req, res) => {
