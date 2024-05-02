@@ -74,8 +74,6 @@ app.get("/", (req, res) => {
   res.send("Hello from Vercel!");
 });
 
-// app.listen(PORT, () => {
-//   console.log(`Server is listening on port ${PORT}`);
-// });
-
-export default server;
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
+});
