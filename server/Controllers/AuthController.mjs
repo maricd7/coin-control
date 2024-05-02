@@ -1,6 +1,6 @@
 // const User = require('../Models/user')
 import User from '../Models/user.mjs'
-import { createSecretToken } from '../util/SecretToken.js'
+import { createSecretToken } from '../util/SecretToken.mjs'
 import bcrypt from 'bcryptjs';
 
 

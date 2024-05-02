@@ -1,5 +1,5 @@
 import express from 'express';
-import {SignUp, Login, Logout} from '../Controllers/AuthController.js';
+import {SignUp, Login, Logout} from '../Controllers/AuthController.mjs';
 
 const router = express.Router();
 router.post('/logout',Logout)

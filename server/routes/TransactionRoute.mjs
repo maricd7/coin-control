@@ -1,5 +1,5 @@
 import express from 'express';
-import { createTransaction,getAllTransactions } from '../Controllers/TransactionController.js'
+import { createTransaction,getAllTransactions } from '../Controllers/TransactionController.mjs'
 
 
 
