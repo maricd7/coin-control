@@ -6,7 +6,7 @@ import cookieParser from "cookie-parser";
 dotenv.config();
 import AuthRoute from './routes/AuthRoute.js'
 import TransactionRoute from './routes/TransactionRoute.js'
-import Transaction from "./Models/Transaction.js";
+import Transaction from "./Models/Transaction.mjs";
 const PORT = process.env.PORT || 5050;
 const app = express();
 
@@ -63,22 +63,20 @@ mongoose.connect(process.env.ATLAS_URI, {
 
 
 
-// // managing cookie-based sessions
-// app.use(cookieParser());
+// managing cookie-based sessions
+app.use(cookieParser());
 
-// app.use(express.json());
+app.use(express.json());
 
-// //making server aware of routes
-// app.use("/", AuthRoute);
-// app.use('/', TransactionRoute) 
+//making server aware of routes
+app.use("/", AuthRoute);
+app.use('/', TransactionRoute) 
 
 
-// import express from "express";
-// import dotenv from 'dotenv'
-// dotenv.config();
+import express from "express";
+import dotenv from 'dotenv'
+dotenv.config();
 
-// const PORT = process.env.PORT || 5050;
-// const app = express();
 
 app.get("/", (req, res) => {
   res.send("Hello from Vercel!");
