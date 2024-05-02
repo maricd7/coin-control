@@ -4,8 +4,8 @@ import dotenv from 'dotenv'
 import  mongoose  from "mongoose";
 import cookieParser from "cookie-parser";
 dotenv.config();
-import AuthRoute from './routes/AuthRoute.js'
-import TransactionRoute from './routes/TransactionRoute.js'
+import AuthRoute from './routes/AuthRoute.mjs'
+import TransactionRoute from './routes/TransactionRoute.mjs'
 import Transaction from "./Models/Transaction.mjs";
 const PORT = process.env.PORT || 5050;
 const app = express();
