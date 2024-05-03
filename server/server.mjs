@@ -21,9 +21,6 @@ app.use((req, res, next) => {
   next();
 });
 
-
-
-
 mongoose.connect(process.env.ATLAS_URI)
 .then(async () => {
   console.log("MongoDB is connected successfully");
