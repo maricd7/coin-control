@@ -19,7 +19,7 @@ export default function SignupContainer() {
 
       try {
         const { data } = await axios.post(
-          "http://localhost:5050/signup",
+          "https://coin-control-server.vercel.app/signup",
           {
               email: email.current.value,
               password: password.current.value,

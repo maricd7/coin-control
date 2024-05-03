@@ -15,7 +15,7 @@ export default function LoginContainer() {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:5050/login",
+        "https://coin-control-server.vercel.app/login",
         {
           email: email.current.value,
           password: password.current.value,
@@ -28,6 +28,7 @@ export default function LoginContainer() {
         // If login is successful, trigger a re-fetch of transactions
         setUsername(username);
         navigate("/");
+        console.log('log in successfull')
       }
     } catch (error) {
       console.log(error);

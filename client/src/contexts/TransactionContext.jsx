@@ -39,15 +39,15 @@ export const TransactionContextProvider = ({ children }) => {
         // If username is stored
         if (storedUsername) {
           setUsername(storedUsername);
-        } else {
-          const { data } = await axios.get("http://localhost:5050/user", {
-            withCredentials: true
-          });
-          const { username } = data;
-          setUsername(username);
+        // } else {
+        //   const { data } = await axios.get("https://coin-control-server.vercel.app/users", {
+        //     withCredentials: true
+        //   });
+        //   const { username } = data;
+        //   setUsername(username);
         }
       } catch (error) {
-        // console.error("Error fetching username:", error);
+        console.error("Error fetching username:", error);
 
         //navigate to login when there is no user
         if(url.includes('signup') || url.includes('landing')){
@@ -66,7 +66,7 @@ export const TransactionContextProvider = ({ children }) => {
   const getTransactions = async () => {
     if(username){
       try {
-        const { data } = await axios.get(`http://localhost:5050/transactions?username=${username}`)
+        const { data } = await axios.get(`https://coin-control-server.vercel.app/transactions?username=${username}`)
         console.log(data, 'data')
         setTransactions(data)
         setType(data)
