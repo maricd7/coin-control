@@ -10,12 +10,7 @@ import Transaction from "./Models/Transaction.mjs";
 const PORT = process.env.PORT || 5050;
 const app = express();
 
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://coin-control-wine.vercel.app");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-  res.header("Access-Control-Allow-Credentials", "true");
-  next();
-});
+
 
 
 app.use(express.json());
