@@ -6,9 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { disableReactDevTools } from '@fvilers/disable-react-devtools';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-if(process.env.NODE_ENV === 'production') {
-  disableReactDevTools()
-}
+
 root.render(
   <React.StrictMode>
     <App />
